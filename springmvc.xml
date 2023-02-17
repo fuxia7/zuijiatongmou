@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd"
+	default-lazy-init="true">
+	<mvc:annotation-driven />
+	<context:annotation-config />
+	<mvc:default-servlet-handler />
+	<!--扫描这个文件夹下的类表示是注解的controller。 到the web文档中可以查找获得 -->
+	<!-- controller包名表示需要扫描这个包下的类 -->
+	<!-- <context:component-scan base-package="com.yr" /> --><!--注意这里的扫描springmvc和spring的配置文件只要配置一次,否则会冲突 -->
+	<!-- 配置页面渲染器 -->
+	<bean id="jspViewResolver"
+		class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.JstlView" />
+		<!-- 配置结果视图的前缀和后缀 ，页面路径默认在webContent下 /test/表示jsp文件在test文件夹 -->
+		<property name="prefix" value="/" />
+		<property name="suffix" value=".jsp" />
+	</bean>
+</beans>
